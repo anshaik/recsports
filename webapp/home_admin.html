@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Dashboard : Recreational Sports Management</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="description"><link rel="icon" href="http://localhost:8888/elgg/_graphics/favicon.ico"><link rel="icon" sizes="16x16 32x32 48x48 64x64 128x128" type="image/svg+xml" href="http://localhost:8888/elgg/_graphics/favicon.svg"><link rel="icon" sizes="16x16" type="image/png" href="http://localhost:8888/elgg/_graphics/favicon-16.png"><link rel="icon" sizes="32x32" type="image/png" href="http://localhost:8888/elgg/_graphics/favicon-32.png"><link rel="icon" sizes="64x64" type="image/png" href="http://localhost:8888/elgg/_graphics/favicon-64.png"><link rel="icon" sizes="128x128" type="image/png" href="http://localhost:8888/elgg/_graphics/favicon-128.png"><link rel="alternative" type="application/rss+xml" title="RSS" href="http://localhost:8888/elgg/admin?view=rss">
+	<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+<link rel="stylesheet" href="css/1.css">	<!--[if gt IE 8]>
+		<link rel="stylesheet" href="http://localhost:8888/elgg/cache/1411156147/default/css/ie" />
+	<![endif]-->
+	<!--[if IE 8]>
+		<link rel="stylesheet" href="http://localhost:8888/elgg/cache/1411156147/default/css/ie8" />
+	<![endif]-->
+	<!--[if IE 7]>
+		<link rel="stylesheet" href="http://localhost:8888/elgg/cache/1411156147/default/css/ie7" />
+	<![endif]-->
+
+	<script>
+var elgg = {"config":{"lastcache":1411156147,"viewtype":"default","simplecache_enabled":1},"security":{"token":{"__elgg_ts":1412787968,"__elgg_token":"6d152545f67ff320ada020378ec6f501"}},"session":{"user":{"guid":37,"type":"user","subtype":"","owner_guid":37,"container_guid":0,"site_guid":1,"time_created":"2014-09-19T21:49:24+02:00","time_updated":"2014-09-19T21:49:24+02:00","url":"http:\/\/localhost:8888\/elgg\/profile\/admin","name":"li","username":"admin","language":"en","admin":true}},"page_owner":{"guid":37,"type":"user","subtype":"","owner_guid":37,"container_guid":0,"site_guid":1,"time_created":"2014-09-19T21:49:24+02:00","time_updated":"2014-09-19T21:49:24+02:00","url":"http:\/\/localhost:8888\/elgg\/profile\/admin","name":"li","username":"admin","language":"en"}};
+</script>
+<script src="http://localhost:8888/elgg/cache/1411156147/default/js/elgg/require_config"></script><script src="js/requirejs/require-2.1.10.min.js"></script><script src="js/jquery/jquery-1.11.0.min.js"></script><script src="js/jquery/jquery-migrate-1.2.1.min.js"></script><script src="js/jquery/jquery-ui-1.10.4.min.js"></script><script src="http://localhost:8888/elgg/cache/1411156147/default/js/elgg"></script><script src="http://localhost:8888/elgg/cache/1411156147/default/js/admin"></script><script src="js/jquery/jquery.jeditable.mini.js"></script>	</head>
+	<body>
+		<div class="elgg-page elgg-page-admin">
+	<div class="elgg-inner">
+		<div class="elgg-page-header">
+			<div class="elgg-inner clearfix">
+				<h1 class="elgg-heading-site">
+	<a href="http://localhost:8888/elgg/admin">
+		Site Administration	</a>
+</h1>
+<ul class="elgg-menu-user">
+	<li>Logged in as li</li>
+	<li><a href="http://localhost:8888/elgg/">View site</a></li>
+	<li><a href="http://localhost:8888/elgg/action/logout">Log out</a></li>
+</ul>
+			</div>
+		</div>
+		<div class="elgg-page-messages">
+			<ul class="elgg-system-messages"><li class="hidden"></li></ul>
+		</div>
+		<div class="elgg-page-body">
+			<div class="elgg-inner">
+				
+<div class="elgg-layout elgg-layout-one-sidebar">
+	<div class="elgg-sidebar clearfix">
+		<div class="elgg-module elgg-module-main elgg-admin-sidebar-menu" ><div class="elgg-body"><h2>Administer</h2><ul class="elgg-menu elgg-menu-page elgg-menu-page-administer"><li class="elgg-menu-item-dashboard"><a href="http://localhost:8888/elgg/admin/dashboard" class="elgg-menu-content">Dashboard</a></li><li class="elgg-menu-item-statistics"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Statistics</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-statistics-overview"><a href="http://localhost:8888/elgg/admin/statistics/overview" class="elgg-menu-content">Overview</a></li><li class="elgg-menu-item-statistics-server"><a href="http://localhost:8888/elgg/admin/statistics/server" class="elgg-menu-content">Server Info</a></li><li class="elgg-menu-item-statistics-cron"><a href="http://localhost:8888/elgg/admin/statistics/cron" class="elgg-menu-content">Cron</a></li></ul></li><li class="elgg-menu-item-users"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Users</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-users-online"><a href="http://localhost:8888/elgg/admin/users/online" class="elgg-menu-content">Currently Online</a></li><li class="elgg-menu-item-users-admins"><a href="http://localhost:8888/elgg/admin/users/admins" class="elgg-menu-content">Administrators</a></li><li class="elgg-menu-item-users-newest"><a href="http://localhost:8888/elgg/admin/users/newest" class="elgg-menu-content">Newest</a></li><li class="elgg-menu-item-users-add"><a href="http://localhost:8888/elgg/admin/users/add" class="elgg-menu-content">Add New User</a></li><li class="elgg-menu-item-users-unvalidated"><a href="http://localhost:8888/elgg/admin/users/unvalidated" class="elgg-menu-content">Unvalidated</a></li></ul></li><li class="elgg-menu-item-administer-utilities"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Utilities</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-administer-utilities-maintenance"><a href="http://localhost:8888/elgg/admin/administer_utilities/maintenance" class="elgg-menu-content">Maintenance mode</a></li><li class="elgg-menu-item-administer-utilities-logbrowser"><a href="http://localhost:8888/elgg/admin/administer_utilities/logbrowser" class="elgg-menu-content">Log browser</a></li><li class="elgg-menu-item-administer-utilities-reportedcontent"><a href="http://localhost:8888/elgg/admin/administer_utilities/reportedcontent" class="elgg-menu-content">Reported content</a></li></ul></li></ul><h2>Configure</h2><ul class="elgg-menu elgg-menu-page elgg-menu-page-configure"><li class="elgg-menu-item-upgrades"><a href="http://localhost:8888/elgg/admin/upgrades" class="elgg-menu-content">Upgrades</a></li><li class="elgg-menu-item-appearance"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Appearance</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-appearance-menu-items"><a href="http://localhost:8888/elgg/admin/appearance/menu_items" class="elgg-menu-content">Menu Items</a></li><li class="elgg-menu-item-appearance-profile-fields"><a href="http://localhost:8888/elgg/admin/appearance/profile_fields" class="elgg-menu-content">Edit Profile Fields</a></li><li class="elgg-menu-item-appearance-default-widgets"><a href="http://localhost:8888/elgg/admin/appearance/default_widgets" class="elgg-menu-content">Default Widgets</a></li></ul></li><li class="elgg-menu-item-plugins"><a href="http://localhost:8888/elgg/admin/plugins" class="elgg-menu-content">Plugins</a></li><li class="elgg-menu-item-settings"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Settings</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-settings-basic"><a href="http://localhost:8888/elgg/admin/settings/basic" class="elgg-menu-content">Basic Settings</a></li><li class="elgg-menu-item-settings-advanced"><a href="http://localhost:8888/elgg/admin/settings/advanced" class="elgg-menu-content">Advanced Settings</a></li><li class="elgg-menu-item-garbagecollector"><a href="http://localhost:8888/elgg/admin/plugin_settings/garbagecollector" class="elgg-menu-content">Garbage Collector</a></li><li class="elgg-menu-item-groups"><a href="http://localhost:8888/elgg/admin/plugin_settings/groups" class="elgg-menu-content">Groups</a></li><li class="elgg-menu-item-logrotate"><a href="http://localhost:8888/elgg/admin/plugin_settings/logrotate" class="elgg-menu-content">Log Rotate</a></li><li class="elgg-menu-item-thewire"><a href="http://localhost:8888/elgg/admin/plugin_settings/thewire" class="elgg-menu-content">The Wire</a></li></ul></li><li class="elgg-menu-item-configure-utilities"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Utilities</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-configure-utilities-robots"><a href="http://localhost:8888/elgg/admin/configure_utilities/robots" class="elgg-menu-content">Robots.txt</a></li></ul></li></ul>
+<h2>Sports</h2><ul class="elgg-menu elgg-menu-page elgg-menu-page-administer"><li class="elgg-menu-item-dashboard"><a href="http://localhost:8888/elgg/admin/dashboard" class="elgg-menu-content">Dashboard</a></li><li class="elgg-menu-item-statistics"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Coaches</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-statistics-overview"><a href="http://localhost:8888/elgg/admin/statistics/overview" class="elgg-menu-content">Overview</a></li><li class="elgg-menu-item-statistics-server"><a href="http://localhost:8888/elgg/admin/statistics/server" class="elgg-menu-content"> Info</a></li><li class="elgg-menu-item-statistics-cron"><a href="http://localhost:8888/elgg/admin/statistics/cron" class="elgg-menu-content">Cron</a></li></ul></li><li class="elgg-menu-item-users"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Users</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-users-online"><a href="http://localhost:8888/elgg/admin/users/online" class="elgg-menu-content">Currently Online</a></li><li class="elgg-menu-item-users-admins"><a href="http://localhost:8888/elgg/admin/users/admins" class="elgg-menu-content">Administrators</a></li><li class="elgg-menu-item-users-newest"><a href="http://localhost:8888/elgg/admin/users/newest" class="elgg-menu-content">Newest</a></li><li class="elgg-menu-item-users-add"><a href="http://localhost:8888/elgg/admin/users/add" class="elgg-menu-content">Add New User</a></li><li class="elgg-menu-item-users-unvalidated"><a href="http://localhost:8888/elgg/admin/users/unvalidated" class="elgg-menu-content">Unvalidated</a></li></ul></li><li class="elgg-menu-item-administer-utilities"><a href="" class="elgg-menu-content elgg-menu-closed elgg-menu-parent">Utilities</a><ul class="elgg-menu elgg-child-menu"><li class="elgg-menu-item-administer-utilities-maintenance"><a href="http://localhost:8888/elgg/admin/administer_utilities/maintenance" class="elgg-menu-content">Maintenance mode</a></li><li class="elgg-menu-item-administer-utilities-logbrowser"><a href="http://localhost:8888/elgg/admin/administer_utilities/logbrowser" class="elgg-menu-content">Log browser</a></li><li class="elgg-menu-item-administer-utilities-reportedcontent"><a href="http://localhost:8888/elgg/admin/administer_utilities/reportedcontent" class="elgg-menu-content">Reported content</a></li></ul></li></ul>
+        </div></div></div>
+	<div class="elgg-main elgg-body">
+		<div class="elgg-head">
+		<div class="elgg-head clearfix"><h2>Dashboard</h2></div>		</div>
+		<div class="elgg-layout-widgets"><div class="elgg-widget-add-control">
+<a href="#widgets-add-panel" class="elgg-button elgg-button-action" rel="toggle">Add widgets</a></div>
+<div class="elgg-widgets-add-panel hidden clearfix" id="widgets-add-panel">
+	<p>
+		Click on any widget button below to add it to the page.	</p>
+	<ul>
+<li title="Lists the banned users" class="elgg-state-available elgg-widget-single" data-elgg-widget-type="banned_users">Banned users</li><li title="You have already added this widget" class="elgg-state-unavailable elgg-widget-single" data-elgg-widget-type="content_stats">Content statistics</li><li title="You have already added this widget" class="elgg-state-unavailable elgg-widget-single" data-elgg-widget-type="control_panel">Control panel</li><li title="You have already added this widget" class="elgg-state-unavailable elgg-widget-single" data-elgg-widget-type="new_users">New users</li><li title="You have already added this widget" class="elgg-state-unavailable elgg-widget-single" data-elgg-widget-type="online_users">Online users</li><li title="Display reported content" class="elgg-state-available elgg-widget-single" data-elgg-widget-type="reportedcontent">Reported content</li><li title="You have already added this widget" class="elgg-state-unavailable elgg-widget-single" data-elgg-widget-type="admin_welcome">Welcome</li>	</ul>
+<input type="hidden" name="widget_context" value="admin" /><input type="hidden" name="show_access" value="0" /></div>
+<div class="elgg-col-1of2 elgg-widgets" id="elgg-widget-col-1"><div class="elgg-module elgg-module-widget elgg-state-draggable elgg-widget-instance-control-panel" id="elgg-widget-38"><div class="elgg-head">	<div class="elgg-widget-handle clearfix"><h3 class="elgg-widget-title">Control panel</h3>
+	<ul class="elgg-menu elgg-menu-widget elgg-menu-hz elgg-menu-widget-default"><li class="elgg-menu-item-collapse"><a href="#elgg-widget-content-38" rel="toggle" class="elgg-menu-content elgg-widget-collapse-button"> </a></li><li class="elgg-menu-item-delete"><a href="http://localhost:8888/elgg/action/widgets/delete?widget_guid=38&amp;__elgg_ts=1412787968&amp;__elgg_token=6d152545f67ff320ada020378ec6f501" title="Remove Control panel" id="elgg-widget-delete-button-38" data-elgg-widget-type="control_panel" class="elgg-menu-content elgg-widget-delete-button"><span class="elgg-icon-delete-alt  elgg-icon"></span></a></li></ul>
+	</div></div><div class="elgg-body">	
+	<div class="elgg-widget-content" id="elgg-widget-content-38">
+		<ul class="elgg-menu elgg-menu-admin-control-panel elgg-menu-hz elgg-menu-admin-control-panel-default"><li class="elgg-menu-item-flush mrm"><a href="http://localhost:8888/elgg/action/admin/site/flush_cache?__elgg_ts=1412787968&amp;__elgg_token=6d152545f67ff320ada020378ec6f501" class="elgg-menu-content elgg-button elgg-button-action">Flush the caches</a></li><li class="elgg-menu-item-upgrade mrm"><a href="http://localhost:8888/elgg/upgrade.php" class="elgg-menu-content elgg-button elgg-button-action">Upgrade</a></li></ul>
+	</div></div></div><div class="elgg-module elgg-module-widget elgg-state-draggable elgg-widget-instance-admin-welcome" id="elgg-widget-39"><div class="elgg-head">	<div class="elgg-widget-handle clearfix"><h3 class="elgg-widget-title">Welcome</h3>
+	<ul class="elgg-menu elgg-menu-widget elgg-menu-hz elgg-menu-widget-default"><li class="elgg-menu-item-collapse"><a href="#elgg-widget-content-39" rel="toggle" class="elgg-menu-content elgg-widget-collapse-button"> </a></li><li class="elgg-menu-item-delete"><a href="http://localhost:8888/elgg/action/widgets/delete?widget_guid=39&amp;__elgg_ts=1412787968&amp;__elgg_token=6d152545f67ff320ada020378ec6f501" title="Remove Welcome" id="elgg-widget-delete-button-39" data-elgg-widget-type="admin_welcome" class="elgg-menu-content elgg-widget-delete-button"><span class="elgg-icon-delete-alt  elgg-icon"></span></a></li></ul>
+	</div></div><div class="elgg-body">	
+	<div class="elgg-widget-content" id="elgg-widget-content-39">
+		<div class="elgg-output"><p>Welcome! Right now you are looking at the administration dashboard. It's useful for tracking what's happening on the site.</p><p>Navigation for the administration area is provided by the menu to the right. It is organized into
+three sections:
+	<dl>
+		<dt>Administer</dt><dd>Everyday tasks like monitoring reported content, checking who is online, and viewing statistics.</dd>
+		<dt>Configure</dt><dd>Occasional tasks like setting the site name or activating a plugin.</dd>
+		<dt>Sports Managements</dt><dd>For business logics you can manage databases containing user public informations.</dd>
+	</dl>
+	</p></div>
+	</div></div></div></div><div class="elgg-col-1of2 elgg-widgets" id="elgg-widget-col-2"><div class="elgg-module elgg-module-widget elgg-state-draggable elgg-widget-instance-online-users" id="elgg-widget-40"><div class="elgg-head">	<div class="elgg-widget-handle clearfix"><h3 class="elgg-widget-title">Online users</h3>
+	<ul class="elgg-menu elgg-menu-widget elgg-menu-hz elgg-menu-widget-default"><li class="elgg-menu-item-collapse"><a href="#elgg-widget-content-40" rel="toggle" class="elgg-menu-content elgg-widget-collapse-button"> </a></li><li class="elgg-menu-item-settings"><a href="#widget-edit-40" title="Customize this widget" rel="toggle" class="elgg-menu-content elgg-widget-edit-button"><span class="elgg-icon-settings-alt  elgg-icon"></span></a></li><li class="elgg-menu-item-delete"><a href="http://localhost:8888/elgg/action/widgets/delete?widget_guid=40&amp;__elgg_ts=1412787968&amp;__elgg_token=6d152545f67ff320ada020378ec6f501" title="Remove Online users" id="elgg-widget-delete-button-40" data-elgg-widget-type="online_users" class="elgg-menu-content elgg-widget-delete-button"><span class="elgg-icon-delete-alt  elgg-icon"></span></a></li></ul>
+	</div></div><div class="elgg-body">	
+<div class="elgg-widget-edit" id="widget-edit-40">
+	<form method="post" action="http://localhost:8888/elgg/action/widgets/save" class="elgg-form elgg-form-widgets-save elgg-form-widgets-save-online-users"><fieldset><input type="hidden" name="__elgg_token" value="6d152545f67ff320ada020378ec6f501" /><input type="hidden" name="__elgg_ts" value="1412787968" />	<p>
+	Number of items to display:
+	<select name="params[num_display]" class="elgg-input-dropdown">
+<option >5</option><option selected="selected">8</option><option >10</option><option >12</option><option >15</option><option >20</option></select>
+</p>
+
+	<div>
+		
+	</div>
+	<div class="elgg-foot">
+		<input type="hidden" name="guid" value="40" />
+		<input type="submit" value="Save" class="elgg-button elgg-button-submit" />
+
+	</div></fieldset></form></div>
+
+	<div class="elgg-widget-content" id="elgg-widget-content-40">
+		<ul class="elgg-list elgg-list-entity"><li id="elgg-user-37" class="elgg-item elgg-item-user"><div class="elgg-image-block clearfix" >
+	<div class="elgg-image"><div class="elgg-avatar elgg-avatar-tiny">
+<span class="elgg-icon-hover-menu  elgg-icon"></span><ul class="elgg-menu elgg-menu-hover"><li><a href="http://localhost:8888/elgg/profile/admin"><span class="elgg-heading-basic">li</span>&#64;admin</a></li><li><ul class="elgg-menu elgg-menu-hover-actions"><li class="elgg-menu-item-avatar-edit"><a href="http://localhost:8888/elgg/avatar/edit/admin" class="elgg-menu-content">Edit avatar</a></li><li class="elgg-menu-item-profile-edit"><a href="http://localhost:8888/elgg/profile/admin/edit" class="elgg-menu-content">Edit profile</a></li></ul></li><li><ul class="elgg-menu elgg-menu-hover-admin"><li class="elgg-menu-item-logbrowser"><a href="http://localhost:8888/elgg/admin/administer_utilities/logbrowser?user_guid=37" class="elgg-menu-content">Explore log</a></li></ul></li></ul><a href="http://localhost:8888/elgg/profile/admin" class=""><img src="http://localhost:8888/elgg/_graphics/icons/user/defaulttiny.gif" alt="li" title="li" class=""/></a></div>
+</div><div class="elgg-body"><h3><a href="http://localhost:8888/elgg/profile/admin" rel="me">li</a></h3><div class="elgg-subtext"></div></div>
+</div></li></ul>
+	</div></div></div><div class="elgg-module elgg-module-widget elgg-state-draggable elgg-widget-instance-new-users" id="elgg-widget-41"><div class="elgg-head">	<div class="elgg-widget-handle clearfix"><h3 class="elgg-widget-title">New users</h3>
+	<ul class="elgg-menu elgg-menu-widget elgg-menu-hz elgg-menu-widget-default"><li class="elgg-menu-item-collapse"><a href="#elgg-widget-content-41" rel="toggle" class="elgg-menu-content elgg-widget-collapse-button"> </a></li><li class="elgg-menu-item-settings"><a href="#widget-edit-41" title="Customize this widget" rel="toggle" class="elgg-menu-content elgg-widget-edit-button"><span class="elgg-icon-settings-alt  elgg-icon"></span></a></li><li class="elgg-menu-item-delete"><a href="http://localhost:8888/elgg/action/widgets/delete?widget_guid=41&amp;__elgg_ts=1412787968&amp;__elgg_token=6d152545f67ff320ada020378ec6f501" title="Remove New users" id="elgg-widget-delete-button-41" data-elgg-widget-type="new_users" class="elgg-menu-content elgg-widget-delete-button"><span class="elgg-icon-delete-alt  elgg-icon"></span></a></li></ul>
+	</div></div><div class="elgg-body">	
+<div class="elgg-widget-edit" id="widget-edit-41">
+	<form method="post" action="http://localhost:8888/elgg/action/widgets/save" class="elgg-form elgg-form-widgets-save elgg-form-widgets-save-new-users"><fieldset><input type="hidden" name="__elgg_token" value="6d152545f67ff320ada020378ec6f501" /><input type="hidden" name="__elgg_ts" value="1412787968" />	<p>
+	Number of items to display:
+	<select name="params[num_display]" class="elgg-input-dropdown">
+<option selected="selected">5</option><option >8</option><option >10</option><option >12</option><option >15</option><option >20</option></select>
+</p>
+
+	<div>
+		
+	</div>
+	<div class="elgg-foot">
+		<input type="hidden" name="guid" value="41" />
+		<input type="submit" value="Save" class="elgg-button elgg-button-submit" />
+
+	</div></fieldset></form></div>
+
+	<div class="elgg-widget-content" id="elgg-widget-content-41">
+		<ul class="elgg-list elgg-list-entity"><li id="elgg-user-37" class="elgg-item elgg-item-user"><div class="elgg-image-block clearfix" >
+	<div class="elgg-image"><div class="elgg-avatar elgg-avatar-tiny">
+<span class="elgg-icon-hover-menu  elgg-icon"></span><ul class="elgg-menu elgg-menu-hover"><li><a href="http://localhost:8888/elgg/profile/admin"><span class="elgg-heading-basic">li</span>&#64;admin</a></li><li><ul class="elgg-menu elgg-menu-hover-actions"><li class="elgg-menu-item-avatar-edit"><a href="http://localhost:8888/elgg/avatar/edit/admin" class="elgg-menu-content">Edit avatar</a></li><li class="elgg-menu-item-profile-edit"><a href="http://localhost:8888/elgg/profile/admin/edit" class="elgg-menu-content">Edit profile</a></li></ul></li><li><ul class="elgg-menu elgg-menu-hover-admin"><li class="elgg-menu-item-logbrowser"><a href="http://localhost:8888/elgg/admin/administer_utilities/logbrowser?user_guid=37" class="elgg-menu-content">Explore log</a></li></ul></li></ul><a href="http://localhost:8888/elgg/profile/admin" class=""><img src="http://localhost:8888/elgg/_graphics/icons/user/defaulttiny.gif" alt="li" title="li" class=""/></a></div>
+</div><div class="elgg-body"><h3><a href="http://localhost:8888/elgg/profile/admin" rel="me">li</a></h3><div class="elgg-subtext"></div></div>
+</div></li></ul>
+	</div></div></div><div class="elgg-module elgg-module-widget elgg-state-draggable elgg-widget-instance-content-stats" id="elgg-widget-42"><div class="elgg-head">	<div class="elgg-widget-handle clearfix"><h3 class="elgg-widget-title">Content statistics</h3>
+	<ul class="elgg-menu elgg-menu-widget elgg-menu-hz elgg-menu-widget-default"><li class="elgg-menu-item-collapse"><a href="#elgg-widget-content-42" rel="toggle" class="elgg-menu-content elgg-widget-collapse-button"> </a></li><li class="elgg-menu-item-settings"><a href="#widget-edit-42" title="Customize this widget" rel="toggle" class="elgg-menu-content elgg-widget-edit-button"><span class="elgg-icon-settings-alt  elgg-icon"></span></a></li><li class="elgg-menu-item-delete"><a href="http://localhost:8888/elgg/action/widgets/delete?widget_guid=42&amp;__elgg_ts=1412787968&amp;__elgg_token=6d152545f67ff320ada020378ec6f501" title="Remove Content statistics" id="elgg-widget-delete-button-42" data-elgg-widget-type="content_stats" class="elgg-menu-content elgg-widget-delete-button"><span class="elgg-icon-delete-alt  elgg-icon"></span></a></li></ul>
+	</div></div><div class="elgg-body">	
+<div class="elgg-widget-edit" id="widget-edit-42">
+	<form method="post" action="http://localhost:8888/elgg/action/widgets/save" class="elgg-form elgg-form-widgets-save elgg-form-widgets-save-content-stats"><fieldset><input type="hidden" name="__elgg_token" value="6d152545f67ff320ada020378ec6f501" /><input type="hidden" name="__elgg_ts" value="1412787968" />	<p>
+	Number of items to display:
+	<select name="params[num_display]" class="elgg-input-dropdown">
+<option >5</option><option selected="selected">8</option><option >10</option><option >12</option><option >15</option><option >20</option></select>
+</p>
+
+	<div>
+		
+	</div>
+	<div class="elgg-foot">
+		<input type="hidden" name="guid" value="42" />
+		<input type="submit" value="Save" class="elgg-button elgg-button-submit" />
+
+	</div></fieldset></form></div>
+
+	<div class="elgg-widget-content" id="elgg-widget-content-42">
+		<table class="elgg-table-alt"><tr><th>Content type</th><th>Number</th></tr><tr><td>Plugins</td><td>35</td></tr><tr><td>Widgets</td><td>5</td></tr></table><div class="mtm"><a href="http://localhost:8888/elgg/admin/statistics/overview">More</a></div>
+	</div></div></div></div>
+<div id="elgg-widget-loader" class="elgg-ajax-loader hidden"></div>
+</div>	</div>
+</div>
+			</div>
+		</div>
+		<div class="elgg-page-footer">
+			<div class="elgg-inner">
+				<ul class="elgg-menu elgg-menu-admin-footer elgg-menu-hz elgg-menu-admin-footer-default"><li class="elgg-menu-item-faq"><a href="http://docs.elgg.org/wiki/Category:Administration_FAQ" class="elgg-menu-content">Administration FAQ</a></li><li class="elgg-menu-item-manual"><a href="http://docs.elgg.org/wiki/Administration_Manual" class="elgg-menu-content">Administration Manual</a></li><li class="elgg-menu-item-blog"><a href="http://blog.elgg.org/" class="elgg-menu-content">Blog</a></li><li class="elgg-menu-item-community-forums"><a href="http://community.elgg.org/groups/all/" class="elgg-menu-content">Community Forums</a></li></ul>
+			</div>
+		</div>
+	</div>
+</div><script>
+require([]);
+</script>
+	</body>
+</html>
