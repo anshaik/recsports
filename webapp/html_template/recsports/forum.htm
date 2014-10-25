@@ -1,0 +1,128 @@
+<!--<?php
+print <<<EOT
+-->
+<div class="position"><span>You're at:</span> {$_SYS['positionindex']} {$_SYS['positionforum']}</div>
+{$adcode[3]}
+<div style='display:none;'>{$forum['forumcontent']}</div>
+<div class="div_out forum_top">
+	<table class="title">
+		<tr>
+			<td class="left"></td>
+			<td><span><a href="{$_SYS['forumurl']}">{$forum['forumname']}</a></span> - [ {$forum['topicsnum']} Team / {$forum['postsnum']} Post ] </td>
+			<td><a href="rss.php?fid={$fid}" class="rss" target="_blank">RSS</a></td>
+			<td class="right"></td>
+		</tr>
+	</table>
+	<div class="forum_top_out">
+	<div class="forum_admins"><b>Coach:</b> {$adminsstr} 
+<!--
+EOT;
+if(isForumAdmin($fid)){
+print <<<EOT
+-->
+			&nbsp;&nbsp;&nbsp;<span class="forum_adminlink"><a href="admin.php?fid={$fid}">Manage</a></span>
+<!--
+EOT;
+}
+print <<<EOT
+-->		
+	</div>
+<!--
+EOT;
+if(!empty($forum['rules'])){
+print <<<EOT
+-->
+	
+		<div class="forum_t">Team rules</div>
+		<div class="forum_rules">{$forum['rules']}</div>		
+<!--
+EOT;
+}
+if(count($cache_forum['childfid'])>0){
+print <<<EOT
+-->
+	<div class="forum_t">Sub</div>
+	<div class="div_out_inner index_forum_2">
+<!--
+EOT;
+		foreach($cache_forum['childfid'] as $cfid){
+			$childforum=$cache_forums[$cfid];
+			if($childforum['ishidden']=='1'){continue;}
+			$lastuser=htmlFilter($childforum['lastuser']);
+			$forumurl=genUrl("forum.php?fid={$cfid}");
+			$viewurl=genUrl("view.php?tid={$childforum['lasttid']}");
+			if($forum['showtype']=='0'){
+				print<<<EOT
+-->
+			<table class="index_a3"><tbody><tr><td class="index_a3_0"><img src="{$childforum['forumicon']}" border="0" /></td><td class="index_a3_1"><b><a href="{$forumurl}">{$childforum['forumname']}</a></b> (Today: <b class="today">{$childforum['todaynum']}</b>)<p>{$childforum['forumcontent']}</p><p>Coach: {$childforum['adminsstr']}</p></td><td width="140px" align="center"><span class="topicsnum">{$childforum['topicsnum']}</span> / {$childforum['postsnum']}</td><td width=""><a href="{$viewurl}">{$childforum['lastpost']}</a><br /><a href="user.php?username={$lastuser}">{$lastuser}</a> - <span class="time">{$childforum['lastposttime']}</span></td></tr></tbody></table>
+<!--
+EOT;
+			}else{
+				print<<<EOT
+-->
+
+<!--
+EOT;
+			}
+		}
+	print<<<EOT
+-->
+	<div class="div_clear"></div>
+	</div>
+
+<!--
+EOT;
+}
+
+print <<<EOT
+-->		
+	</div>
+</div>
+<div class="div_clear" style="height:10px;"></div>
+
+
+<div class="div_out">
+		<table class="forum_a1">
+			<thead><tr><td width="30px">Type</td><td>Title ( <a href="forum.php?fid={$fid}&orderby=replynum">Hot</a> | <a href="forum.php?fid={$fid}&orderby=isgood">Highlight</a> | Date: <a href="forum.php?fid={$fid}&orderby=lastreply&d=86400">Day</a> <a href="forum.php?fid={$fid}&orderby=lastreply&d=604800">Week</a> <a href="forum.php?fid={$fid}&orderby=lastreply&d=2592000">Month</a> )</td><td width="120px" style="text-align:center;"><a href="forum.php?fid={$fid}&orderby=author">Author</a> / <a href="forum.php?fid={$fid}&orderby=posttime">Date</a></td><td width="100px" style="text-align:center;"><a href="forum.php?fid={$fid}&orderby=replynum">Response</a> / <a href="forum.php?fid={$fid}&orderby=hits">View</a></td><td width="120px" style="text-align:right;"><a href="forum.php?fid={$fid}&orderby=lastreply">Last Post</a></td></tr></thead>
+<!--
+EOT;
+
+if($curPage<=1){
+	foreach($forum_ancarr as $announce){
+	$userurl=genUrl("user.php?uid={$announce['userid']}");
+print<<<EOT
+-->
+			<tbody><tr><td align="center"><a href="{$announce['anclink']}" target="_blank" title="公告" target="_blank"><img src="images/topic/announce.gif" border="0" /></a></td><td><a class="title" href="{$announce['anclink']}" target="_blank"><span style="color:{$announce['color']}">{$announce['title']}</span></a></td><td style="text-align:center;"><a href="{$userurl}" target="_blank">{$announce['username']}</a><br /><span class="time">{$announce['posttime']}</span></td><td style="text-align:center;">&nbsp;</td><td style="text-align:right;">&nbsp;</td></tr></tbody>
+<!--
+EOT;
+	}
+if($annouceNum>0){
+print<<<EOT
+-->
+<tbody class="forum_split"><tr><td></td><td colspan=4>Theme</td></tr></tbody>
+<!--
+EOT;
+}
+}
+
+	foreach($topics as $topic){
+print<<<EOT
+-->
+			<tbody><tr><td align="center"><a href="{$topic['viewurl']}" target="_blank" title="{$topic['icon'][1]}"><img src="images/topic/{$topic['icon'][0]}.gif" border="0" /></a></td><td><a class="title" href="{$topic['viewurl']}">{$topic['title']}</a> {$topic['addstr']}</td><td style="text-align:center;"><a href="{$topic['userurl']}" target="_blank">{$topic['username']}</a><br /><span class="time">{$topic['posttime']}</span></td><td style="text-align:center;"><span class="reply">{$topic['replynum']}</span> / {$topic['hits']}</td><td style="text-align:right;"><a href="user.php?username={$topic['topicuser']}">{$topic['topicuser']}</a><br /><span class="time">{$topic['topiclasttime']}</span></td></tr></tbody>
+<!--
+EOT;
+	}
+print<<<EOT
+-->
+		</table>
+</div>
+<div class="div_out forum_post">
+	<table class="post"><tr><td class="left">
+
+	</td><td class="right">{$pager->getPageStr()}</td></tr></table>
+</div>
+{$adcode[2]}
+<!--
+EOT;
+?>
+-->

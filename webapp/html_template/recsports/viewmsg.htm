@@ -1,0 +1,96 @@
+<!--<?php
+print <<<EOT
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="{$_SYS['TP']}/global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="getfiles.php?t=js&v={$_SYS['VERSION']}&f=util|ajax"></script>
+</head>
+<body class="viewmsg_body">
+<!--
+EOT;
+if($action=="view"){
+print <<<EOT
+-->
+<div class="viewmsg_out" style="height:420px;">
+	<div class="msg_title"><span class="name">{$msgrow['fromuser']}</span> Send at <span class="time">{$msgrow['posttime']}</span>&nbsp;&nbsp;
+<!--
+EOT;
+if($msgrow['fromuserid']>0){
+print <<<EOT
+-->	 
+	<a href="viewmsg.php?action=send&id={$msgrow['id']}&uid={$msgrow['fromuserid']}" target="_self"><img src="images/btn_replymsg.gif" border="0" align="absmiddle" /></a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	<a href="viewmsg.php?action=del&id={$msgrow['id']}" target="_self"><img src="images/btn_delmsg.gif" border="0" align="absmiddle" /></a> </div>
+	<div style="font-size:14px; font-weight:bold;">{$msgrow['itle']}</div>
+	<div class="msg_content">{$msgrow['content']}</div>
+</div>
+<!--
+EOT;
+}
+else if($action=="send"){
+$msgrow['title'] = empty($msgrow['title'])?"":"回复:{$msgrow['title']}";
+print <<<EOT
+-->
+<div class="viewmsg_out" style="height:250px;">
+	<div style="">
+		<form id="msg_form" onsubmit="return false;">
+		<table class="msg_table">
+			<tr><td class="left">Receipt:</td><td><input name="tousername" id="tousername" type="text" style="width:140px;" value="{$msgrow['fromuser']}" class="text_css" /></td></tr>
+			<tr><td class="left">Title:</td><td><input name="title" id="title" type="text" style="width:400px;" value="{$msgrow['title']}" class="text_css" /></td></tr>
+			<tr><td class="left">Content:</td><td><textarea name="content" id="content" style="width:400px; height:140px;">{$msgrow['content']}</textarea></td></tr>
+			<tr><td class="left"></td><td><input type="button" class="button_css" value=" 发  送 " onclick="ajax_saveMsg()" /> <span id="sendtips"></span></td></tr>
+		</table>
+		</form>
+	</div>
+</div>
+<script>
+
+function ajax_saveMsg(){
+	if(getV("tousername")==""||getV("title")==""||getV("content")==""){
+		E("sendtips").innerHTML="Invalid input!";
+		return;
+	}else{
+		E("sendtips").innerHTML="";
+		ajaxPost("msg_form", "ajaxmember.php?action=saveMsg", saveMsg_callback);
+	}
+}
+function saveMsg_callback(data){
+	var btns=[];
+	if(isSucceed(data)){
+		btns=[
+			{value:"OK",onclick:"javascript:popwin.close();",focus:true}
+		];
+		window.parent.popwin.showDialog(1,"Successfully","Successfully",btns,380,140);
+	}else{
+		E("sendtips").innerHTML = data;
+	}
+}
+
+setTimeout(
+	function(){
+		if(E("tousername").value!=""){
+			E("title").focus();
+		}
+	},200
+);
+
+</script>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

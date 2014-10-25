@@ -1,0 +1,133 @@
+<!--<?php
+print <<<EOT
+-->
+<script type="text/javascript" src="getfiles.php?t=js&v={$_SYS['VERSION']}&f=util|popwin|ajax|post|user"></script>
+<div class="position"><span>You're at:</span> {$_SYS['positionindex']} {$_SYS['positionforum']} » <a href="{$_SYS['viewurl']}">{$topic['title']}</a></div>
+{$adcode[3]}
+<div class="div_out">
+<div class="view_top">
+<table class="topictitle">
+	<tr>
+		<td class="left"></td>
+		<td><span>帖子状态</span> &nbsp; {$iconstr}</td>
+		<td class="right"></td>
+	</tr>
+</table>{$stampstr}
+<div class="view_top_out1">
+<div class="view_h">本帖子共有 <b>{$topic['hits']}</b> 位阅读者, <b>{$topic['replynum']}</b> 个回复.</div>
+<!--
+EOT;
+if(isForumAdmin($fid)){
+print <<<EOT
+-->
+<div class="view_h"><b>帖子管理:</b> {$adminstr}</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<div class="view_btn">
+	<table class="post"><tr><td class="left"><div class="post_drop"><ul><li><a href="post.php?fid={$fid}"><img src="{$_SYS['TP']}/images/btn_post.gif" border="0" align="absmiddle" alt="发表帖子" /><!--[if IE 7]><!--></a><!--<![endif]--><!--[if lte IE 6]><table><tr><td><![endif]--><ul><li><a href="post.php?fid={$fid}"><i class="img_normal"></i> 话题</a></li><li><a href="post.php?fid={$fid}&topictype=1"><i class="img_vote"></i> 投票</a></li><li><a href="post.php?fid={$fid}&topictype=2"><i class="img_reward"></i> 悬赏</a></li></ul><!--[if lte IE 6]></td></tr></table></a><![endif]--></li></ul><ul><li><a href="post.php?action=reply&tid=$tid"><img src="{$_SYS['TP']}/images/btn_reply.gif" border="0" align="absmiddle" alt="回复" /></a></li></ul></div>
+	</td><td class="right">{$pager->getPageStr()}</td></tr></table>
+</div>
+</div>
+<div class="div_clear" style="height:6px;"></div>
+<div class="view_top_out">
+<!--
+EOT;
+$p=0;
+foreach($posts as $post){
+	$p++;
+	$obj=$postarr[$p];
+	$floor=($curPage-1)*10+$p;
+print<<<EOT
+-->
+
+<table class="view_a4">
+	<tr>
+		<td class="view_a1">
+			<div>
+				<a href="{$obj['userurl']}" target="_blank"><img class="userpic" src="userpic.php?uid={$post['userid']}&type=big" border="0" align="absmiddle" /></a><p class="namemsg"><a href="{$obj['userurl']}" target="_blank" class="name">{$post['username']}</a>{$obj['writemsg']}</p>
+				{$cache_groups[$post[groupid]][groupname]}<br />
+				<a href="credits.php?action=popedom&groupid={$post[groupid]}" target="_blank"><u class="star_img" title="{$cache_groups[$post[groupid]][groupname]}">{$obj['starimg']}</u></a>
+				{$obj['memberstr']}
+			</div>
+		</td>
+		<td class="view_a2">
+			<div class="author"><a href="{$obj['userurl']}" target="_blank" class="name sex{$post['sex']}">{$post['username']}</a> 发表于 <span class="time">{$obj['posttime']}</span>&nbsp; {$post['ip']}  &nbsp; {$obj['editstr']}{$obj['adminstr']} </div>
+			<div class="floor"><a href="#f{$floor}" name="f{$floor}">#{$floor}</a></div>
+			<div class="title">{$post['title']}</div>
+			{$obj['votecontent']}{$obj['rewardcontent']}
+			<div class="content">{$post['content']}</div>
+			{$post['edittips']}
+		</td>
+	</tr>
+	<tr><td class="view_a1"></td><td class="view_a8">{$obj['signature']}<div class="ad_4">{$obj['postad']}</div></td></tr>
+	<tr><td class="view_a1"></td><td class="view_a7"><div><a href="post.php?action=reply&tid={$tid}&replypostid={$post['id']}&f={$floor}&p={$curPage}" class="reply">回复</a><a href="post.php?action=reply&tid={$tid}&quotepostid={$post['id']}" class="quote">引用</a>{$obj['beststr']}<a class="scrolltop" href="javascript:scroll(0,0);">顶端</a></div></td></tr>
+	<tr><td class="view_a5"></td><td class="view_a6"></td></tr>
+</table>
+<!--
+EOT;
+}
+print<<<EOT
+-->
+</div>
+</div>
+<div class="div_out forum_post">
+	<table class="post"><tr><td class="left"><div class="post_drop"><ul><li><a href="post.php?fid={$fid}"><img src="{$_SYS['TP']}/images/btn_post.gif" border="0" align="absmiddle" alt="发表帖子" /><!--[if IE 7]><!--></a><!--<![endif]--><!--[if lte IE 6]><table><tr><td><![endif]--><ul><li><a href="post.php?fid={$fid}"><i class="img_normal"></i> 话题</a></li><li><a href="post.php?fid={$fid}&topictype=1"><i class="img_vote"></i> 投票</a></li><li><a href="post.php?fid={$fid}&topictype=2"><i class="img_reward"></i> 悬赏</a></li></ul><!--[if lte IE 6]></td></tr></table></a><![endif]--></li></ul><ul><li><a href="post.php?action=reply&tid=$tid"><img src="{$_SYS['TP']}/images/btn_reply.gif" border="0" align="absmiddle" alt="回复" /></a></li></ul></div>
+	</td><td class="right">{$pager->getPageStr()}</td></tr></table>
+</div>
+<!--
+EOT;
+if(isLogin() && ($topic['islock']==0 || isForumAdmin($fid))){
+print<<<EOT
+-->
+<div class="div_out view_reply">
+<form action="{$replyaction}" method="POST" onsubmit="return checkFormSubmit()">
+<table>
+	<tr>
+		<td class="view_a1">
+			<div>
+				<a href="user.php?uid={$lg['userid']}" target="_blank"><img class="userpic" src="userpic.php?uid={$lg['userid']}&type=big" border="0" align="absmiddle" /></a><br />
+				<a href="user.php?uid={$lg['userid']}" target="_blank">{$lg['displayname']}</a><br />
+			</div>
+		</td>
+		<td class="">
+			<textarea style="width:400px; height:150px;display:none;" name="content" id="content"></textarea>
+			<iframe ID="Editor" name="Editor" src="inc/editor/ubb/editor.htm?ubb=1&id=content&frmid=Editor" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:250px;width:99%;"></iframe>
+			<br /><input type="submit" class="button_css" value="  提  交  " />
+<!--
+EOT;
+if($cache_settings['postsecuritycode']=='1'){
+print <<<EOT
+-->
+			<input type="text" style="width:50px;" name="securitycode" id="securitycode" tabIndex="102" title="验证码" value="验证码" onmouseover="this.select()" class="text_css" /> <a href="javascript:reloadVerify('securitycodeimg')" title="看不清楚？点击刷新验证码"><img src="code.php?t={$_SYS['time']}" align="absmiddle" border="0" id="securitycodeimg" /></a> <span id="verify_tips"></span>
+<!--
+EOT;
+}
+print <<<EOT
+-->			
+		</td>
+	</tr>
+</table>
+</form>
+</div>
+<!--
+EOT;
+}
+print<<<EOT
+-->
+</div>
+{$adcode[2]}
+<script>
+var popedom_14="{$popedom_14}";
+window.onload=view_PageInit;
+function checkFormSubmit(){
+	return checkContent(true);
+}
+
+</script>
+<!--
+EOT;
+?>
+-->

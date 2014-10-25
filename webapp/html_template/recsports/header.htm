@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$headtitle}</title>
+{$headmeta}
+{$cache_settings['headcontent']}
+<link href="{$_SYS['TP']}/css.php?t=templatecss&s={$_SYS['styleid']}&v={$_SYS['VERSION']}&f=global" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="header">
+	<div class="centerbg"><div class="logoleft"><a href="{$_SYS['indexurl']}"><img src="images/logo.gif"></a></div><div class="logoright">{$adcode[1]}</div></div>
+	<div class="menu">
+	<div class="leftmenu">
+<!--
+EOT;
+if(isLogin()){
+print <<<EOT
+-->
+<ul>{$sys_menu}<li><div class="menu_split"></div><a href="member.php">Welcome: {$lg['displayname']}</a></li><li><div class="menu_split"></div><a href="member.php?action=msg">Messages</a></li><li><div class="menu_split"></div><a href="member.php">Personal Center</a></li><li><div class="menu_split"></div><a href="logout.php">Quit</a></li>
+<!--
+EOT;
+if($lg['groupid']==GROUP_ADMIN){
+print <<<EOT
+-->
+<li><div class="menu_split"></div><a href="admin" target="_blank">Admin Console</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</ul>
+<!--
+EOT;
+}else{
+print <<<EOT
+-->
+<ul><li><a href="{$_SYS['indexurl']}">Return</a></li><li><div class="menu_split"></div><a href="login.php">Login</a></li><li><div class="menu_split"></div><a href="{$cache_settings['signupfilename']}">Register</a></li></ul>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	</div>
+	<div class="rightmenu">
+		<div class="rightmenu_inner">
+		<ul>
+		<li><a href="search.php?action=new">New</a></li><li><a href="search.php?action=good">Highlight</a></li><li><a href="search.php">Search</a></li><li><a href="userlist.php">Member List</a></li>
+<!--
+EOT;
+if(!empty($cache_plugins)){
+print <<<EOT
+-->
+	  <li><a href="#">Plugin
+	   <!--[if IE 7]><!--></a><!--<![endif]-->
+	   <!--[if lte IE 6]><table><tr><td><![endif]-->
+	   <ul>
+<!--
+EOT;
+foreach($cache_plugins as $tmp){
+$pluginscode.=$tmp['code'];
+print <<<EOT
+-->
+		<li><a href="{$tmp[link]}">{$tmp[name]}</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	   </ul>
+	   <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+	  </li>
+		<li class="dropmenu"></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	  <li><a href="#">Template
+	   <!--[if IE 7]><!--></a><!--<![endif]-->
+	   <!--[if lte IE 6]><table><tr><td><![endif]-->
+	   <ul>
+<!--
+EOT;
+foreach($cache_template as $tmp){
+print <<<EOT
+-->
+		<li><a href="index.php?styleid={$tmp['id']}" style="color:{$tmp['color1']}">{$tmp['name']}</a></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	   </ul>
+	   <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+	  </li>
+		<li class="dropmenu"></li>
+      </ul>
+      </div>
+	</div>
+	</div>
+</div>
+{$pluginscode}
+<!--
+EOT;
+?>

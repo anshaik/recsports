@@ -1,0 +1,75 @@
+<!--<?php
+print <<<EOT
+-->
+<script type="text/javascript" src="getfiles.php?t=js&v={$_SYS['VERSION']}&f=util|roster|popwin|ajax|user|post"></script>
+<div class="position"><span>You're at:</span> {$_SYS['positionindex']} » <a href="{$user['userurl']}">See {$user['username']} info</a></div>
+<div class="div_out">
+	<table class="user">
+	<tr>
+	<td class="userleft">
+<!--
+EOT;
+if(empty($topic_rows)){
+print <<<EOT
+-->
+<div class="user_post"><h1 class="title">Nothing found.</h1></div>
+<!--
+EOT;
+}
+foreach($topic_rows as $topic){
+print <<<EOT
+-->		
+		<div class="user_post">
+			<h1 class="title"><a href="{$topic['viewurl']}" target="_blank" title="{$topic['icon'][1]}"><img src="images/topic/{$topic['icon'][0]}.gif" border="0" /></a> <a class="title" href="{$topic['viewurl']}" target="_blank">{$topic['title']}</a> </h1><p class="content">{$topic['content']}</p>
+			<div class="forum_time">Team:<a href="{$topic['forumurl']}" target="_blank">{$cache_forums[$topic['fid']]['forumname']}</a> Time: <span class="time">{$topic['posttime']}</span></div>
+		</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+	<div class="pagediv">
+		<table class="pagetable"><tr><td class="left"></td><td class="right">{$pager->getPageStr()}</td></tr></table>
+	</div>
+	<div class="div_clear" style="height:20px;"></div>
+	</td>
+	<td class="userright">
+
+		<div class="div_clear" style="height:8px;"></div>
+		<!--用户资料 -->
+		<div class="user_details">
+			<img src="userpic.php?uid={$user['id']}&type=big" border="0" align="absmiddle" class="userpic" />
+			<p class="namemsg"><a href="{$user['userurl']}" class="name">{$user['username']}</a>{$writemsg}<a href="rss.php?uid={$user['id']}" class="rss" target="_blank" title="RSS 订阅"></a></p>
+			{$cache_groups[$user['groupid']]['groupname']}<br /><a href="credits.php?action=popedom&groupid={$user[groupid]}" target="_blank"><u class="star_img" title="{$cache_groups[$user[groupid]][groupname]}">{$starimg}</u></a>
+			{$memberstr}
+		</div>
+		<div class="div_clear" style="height:20px;"></div>
+
+
+		<!--TA的粉丝-->
+		<div class="user_friend_title">Friends:({$fans_count})</div>
+		<ul class="user_friend">
+<!--
+EOT;
+foreach($fans_rows as $fan){
+$fan['userurl']=genUrl("user.php?uid={$fan['fanid']}");
+$fan['username']=htmlFilter($fan['username']);
+print <<<EOT
+-->	
+		<li><a href="{$fan['userurl']}" target="_blank"><img src="userpic.php?uid={$fan['fanid']}" border="0" /></a><b>{$fan['username']}</b></li>
+<!--
+EOT;
+}
+print <<<EOT
+-->	
+		<div class="div_clear"></div>
+		</ul>
+		<a href="javascript:addFans({$user['id']})"><img src="{$_SYS['TP']}/images/btn_befans.gif" border="0" /></a>
+</td>
+</tr>
+</table>
+</div>
+<!--
+EOT;
+?>
+-->

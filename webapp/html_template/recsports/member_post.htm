@@ -1,0 +1,25 @@
+<!--<?php
+print <<<EOT
+-->
+<div class="member_title">{$member_title}</div>
+<table class="forum_a1 member_post">
+<thead><tr><td width="30px">Type</td><td>Title</td><td width="100px" style="text-align:center;">Response / View</td><td width="120px">Team</td><td width="120px">Author/Date</td></tr></thead>
+<!--
+EOT;
+foreach($rows as $row){
+print <<<EOT
+-->
+<tbody><tr><td><a href="{$row['viewurl']}" target="_blank" title="{$row['icon'][1]}"><img src="images/topic/{$row['icon'][0]}.gif" border="0" /></a></td><td><a class="title" href="{$row['viewurl']}" target="_blank">{$row['title']}</a></td><td style="text-align:center;"><span class="reply">{$row['replynum']}</span> / {$row['hits']}</td><td><a href="{$row['forumurl']}" target="_blank">{$row['forumname']}</a></td><td><a href="{$row['userurl']}" target="_blank">{$row['username']}</a><br /><span class="time">{$row['posttime']}</span></td></tr></tbody>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</table>
+<div class="pagediv">
+	<table class="pagetable"><tr><td class="left"></td><td class="right">{$pager->getPageStr()}</td></tr></table>
+</div>
+<!--
+EOT;
+?>
+-->

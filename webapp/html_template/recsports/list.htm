@@ -1,0 +1,50 @@
+<!--<?php
+if(!empty($secmenu)){
+print <<<EOT
+-->
+<div class="portal_menu_sec" style="">{$secmenu}</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<div class="position"><span>You're at:</span> {$_SYS['positionportal']} {$_SYS['positionchannel']}</div>
+<!--
+EOT;
+print <<<EOT
+-->
+<div class="portal_2">
+	<div class="list_2_2">
+		<div class="list_news_block">
+			<span class="portal_title2">{$channel['channelname']}</span>
+			<ul>
+<!--
+EOT;
+foreach($articles as $article){
+print <<<EOT
+-->
+	<li><span class="title"><a href="{$article['link']}" target="_blank">{$article['title']}</a></span><span class="time">{$article['posttime']}</span></li>
+
+<!--
+EOT;
+}
+print <<<EOT
+-->
+			</ul>
+			<div class="list_pager">{$pager->getPageStr()}</div>
+		</div>
+	</div>
+	
+	<div class="list_2_3">{list_right_top}
+		<span class="portal_title1">Highlight</span><ul class="block_ul">{$portal->getArticles($cid,2,0,10,2,70)}</ul>
+		<div class="div_clear" style="height:10px;"></div>
+		<span class="portal_title1">Hot</span><ul class="block_ul">{$portal->getArticles(0,0,1,10,0)}</ul>
+		{list_right_bottom}
+	</div>
+	<div class="div_clear"></div>
+</div>
+{portal_middle}
+<!--
+EOT;
+?>
+-->

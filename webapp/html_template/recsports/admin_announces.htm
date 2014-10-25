@@ -1,0 +1,93 @@
+<!--<?php
+print <<<EOT
+-->
+<div class="div_clear" style="height:5px;"></div>
+<div class="admin_out">
+		<div class="admin_title">{$pagetitle}</div>
+		<form id="ancform" onsubmit="return false;">
+		<dl class="admin_dl">
+			<dt>Title</dt>
+			<dd>	
+				<input type="hidden" size="3" name="ancid" id="ancid" value="{$ancrow['id']}" /><input type="hidden" size="3" name="fid" id="fid" value="{$fid}" /><input type="text" size="50" style="color:{$ancrow['color']}" name="anc[title]" id="anc[title]" value="{$ancrow['title']}" class="text_css" /> Color:<img src="images/ico_color.gif" align="absmiddle" border="0" id="img_color" class="colorpicker" /><input type="hidden" size="7" class="admin_color" name="anc[color]" id="anc[color]" value="{$ancrow['color']}" />
+			</dd>
+			<dt>Date:</dt>
+			<dd>	
+				<input type="text" size="11" name="anc[starttime]" id="anc[starttime]" value="{$ancrow['starttime']}" class="text_css" /> ~ <input type="text" size="11" name="anc[stoptime]" id="anc[stoptime]" value="{$ancrow['stoptime']}" class="text_css" />
+			</dd>
+			<dt>Type:</dt>
+			<dd>	
+				<select name="anc[type]" id="anc[type]" onchange="changeType()"><option value="0">Content</option><option value="1">Link</option></select>
+			</dd>
+		</dl>
+		<dl class="admin_dl" id="urldl" style="overflow:hidden;height:0px;">
+			<dt>Link:</dt>
+			<dd>	
+				<input type="text" size="80" name="anc[url]" id="anc[url]" value="{$ancrow['url']}" class="text_css" />
+			</dd>
+		</dl>
+		<dl class="admin_dl" id="contentdl" style="overflow:hidden;height:0px;">
+			<dt>Content:</dt>
+			<dd>	
+					<textarea style="display:none;" name="anc[content]" id="anc[content]">{$ancrow['content']}</textarea>
+					<iframe ID="Editor" name="Editor" src="inc/editor/ubb/editor.htm?ubb=1&id=anc[content]&frmid=Editor" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" style="height:200px;width:600px"></iframe>
+			</dd>
+		</dl>
+		<dl class="admin_dl">
+			<dt></dt>
+			<dd>	
+				<input type="button" class="button_css" value="Submit" onclick="ajax_announces()" />
+			</dd>
+		</dl>
+		</form>
+<!--
+EOT;
+if(empty($ancid)){
+print <<<EOT
+-->		<div class="div_clear" style="height:10px;"></div>
+		<div class="admin_title">List</div>
+		<form id="anclistform" onsubmit="return false;">
+		<table class="forum_a1">
+			<thead><tr><td width="30px"><span class="warning">Delete</span></td><td width="30px">Order</td><td>Title</td><td width="30px">Type</td><td width="170px" style="text-align:center;">Date</td><td width="120px" style="text-align:center;">Author / Date</td><td width="30px" style="text-align:center;">Operation</td></tr></thead>
+<!--
+EOT;
+	foreach($rows as $row){
+print<<<EOT
+-->
+			<tbody><tr>
+			<td><input type="checkbox" value="{$row['id']}" name="ids[]" class="checkbox_css" /></td>
+			<td><input type="text" value="{$row['ordernum']}" size="2" name="ordernum[{$row['id']}]" class="text_css" /></td>
+			<td><a class="title" href="{$row['rowlink']}" target="_blank"><span style="color:{$row['color']}">{$row['title']}</span></a></td>
+			<td>{$row['rowtype']}</td>
+			<td style="text-align:center;"><span class="time">{$row['starttime']}</span> ~ <span class="time">{$row['stoptime']}</span></td>
+			<td style="text-align:center;"><a href="user.php?uid={$row['userid']}">{$row['username']}</a><br /><span class="time">{$row['posttime']}</span></td>
+			<td style="text-align:center;"><a href="admin.php?action=announces&ancid={$row['id']}&fid={$fid}">Edit</a></td>
+			</tr></tbody>
+<!--
+EOT;
+	}
+print<<<EOT
+-->
+		</table>
+		<div class="admin_a2_1">
+			<input type="hidden" value="{$fid}" name="fid" id="fid" /><input type="button" class="button_css" value="Submit" onclick="ajax_doannounces()" />
+		</div>
+
+		</form>
+<!--
+EOT;
+	}
+print<<<EOT
+-->
+</div>
+<script>
+var ancid="{$ancrow['id']}";
+var anctype ="{$ancrow['type']}";
+window.onload=announces_PageInit;
+function checkFormSubmit(){
+	return false;
+}
+</script>
+<!--
+EOT;
+?>
+-->

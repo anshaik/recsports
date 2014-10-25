@@ -1,0 +1,198 @@
+<!--<?php
+print <<<EOT
+-->
+<div class="div_out index_top">
+	<table class="index_toptable">
+		<tr>
+			<td class="left"></td>
+			<td width="500px">
+<!-- 
+EOT;
+if(!isLogin()){
+print <<<EOT
+-->
+<form action="login.php?action=login" method="POST"><input type="text" value="Username" size="14" name="username" onmouseover="this.focus();this.select()" tabIndex="100" title="Username" class="text_css" /> <input type="password" value="" size="9" name="userpass" tabIndex="101" title="Password" class="text_css" />
+<!--
+EOT;
+if($cache_settings['loginsecuritycode']=='1'){
+print <<<EOT
+-->
+			<input type="text" style="width:40px;" name="securitycode" id="securitycode" tabIndex="102" title="Validation Code" value="Validation Code" onmouseover="this.select()" class="text_css" /> <a href="javascript:reloadVerify('securitycodeimg')" title="Refresh"><img src="code.php?t={$_SYS['time']}" align="absmiddle" border="0" id="securitycodeimg" /></a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<input type="submit" class="button_css" value="Login" tabIndex="103"  /> <a href="{$cache_settings['signupfilename']}" class="spc">Register</a></form>
+<!-- 
+EOT;
+}else{
+print <<<EOT
+-->
+<table class="index_login0">
+<tr><td rowspan=2 class="index_login1"><a href="{$_SYS['userurl']}"><img src="userpic.php?uid={$lg['userid']}&type=small" class="index_userpic" align="absmiddle" /></a></td><td class="index_login2"><span>{$mygroupname}</span><u class="star_img" title="{$mygroupname}">{$mygroupstar}</u></td></tr>
+<tr><td class="index_login3"><a href="member.php?action=mytopic">My Posts</a> | <a href="search.php?action=new">New</a> | {$msg_link}</td></tr>
+</table>
+<!-- 
+EOT;
+}
+print <<<EOT
+-->
+			</td>
+			<td>
+				Theme:{$cache1['topicsnum']} | Post {$cache1['postsnum']} | User:{$cache1['usersnum']} | New:<a href="user.php?username={$cache1['lastuser']}" class="spc">{$cache1['lastuser']}</a><br />
+			</td>
+			<td class="right"></td>
+		</tr>
+	</table>
+</div>
+
+<div class="div_out_inner_nobg position"><span>You're at:</span> {$_SYS['positionindex']} » <a href="{$_SYS['indexurl']}">Index</a></div>
+{$adcode[3]}
+
+
+<!--
+EOT;
+if(!empty($announce_index)){
+print <<<EOT
+-->
+<div class="div_out index_anc">
+	<div id="announce_index_div">{$announce_index}</div>
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<div class="div_out index_forum">
+	<table class="title">
+		<tr>
+			<td class="left"></td>
+			<td>Team</td>
+			<td class="right"></td>
+		</tr>
+	</table>
+	<div class="index_fourm_out">
+	<div class="div_clear" style="height:6px;"></div>
+	
+<!--
+EOT;
+foreach($cache_forums as $forum){
+	if(intval($forum['pid'])>0 || (!empty($_GET['fid']) && intval($_GET['fid'])!=intval($forum['id']))){
+		continue;
+	}
+	print<<<EOT
+-->
+	<div class="index_forum_1"><span class="folder_1" id="folder_{$forum['id']}" onclick="forumFolder({$forum['id']})">{$forum['forumname']}</span></div>
+	<div class="div_out_inner index_forum_2" id="folderdiv_{$forum['id']}">
+<!--
+EOT;
+	if(is_array($forum['childfid'])){
+		foreach($forum['childfid'] as $cfid){
+			$childforum=$cache_forums[$cfid];
+			if($childforum['ishidden']=='1'){continue;}
+			$forumurl=genUrl("forum.php?fid={$cfid}");
+			$viewurl=genUrl("view.php?tid={$childforum['lasttid']}");
+			$childforum['lastuser']=htmlFilter($childforum['lastuser']);
+			if($forum['showtype']=='0'){
+				print<<<EOT
+-->
+			<table class="index_a3"><tbody><tr><td class="index_a3_0"><img src="{$childforum['forumicon']}" border="0" /></td><td class="index_a3_1"><b><a href="{$forumurl}">{$childforum['forumname']}</a></b> (今日:<b class="today">{$childforum['todaynum']}</b>)<p>{$childforum['forumcontent']}</p><p>Coach: {$childforum['adminsstr']}</p></td><td width="140px" align="center"><span class="topicsnum">{$childforum['topicsnum']}</span> / {$childforum['postsnum']}</td><td width=""><a href="{$viewurl}">{$childforum['lastpost']}</a><br /><a href="user.php?username={$childforum['lastuser']}">{$childforum['lastuser']}</a> - <span class="time">{$childforum['lastposttime']}</span></td></tr></tbody></table>
+<!--
+EOT;
+			}else{
+				print<<<EOT
+-->
+			<div class="index_b"><table class="index_b3"><tbody><tr><td class="index_b3_0"><img src="{$childforum['forumicon']}" border="0" /></td><td class="index_b3_1"><b><a href="{$forumurl}">{$childforum['forumname']}</a></b> (Today:<b class="today">{$childforum['todaynum']}</b>)<br />Theme:{$childforum['topicsnum']}  &nbsp;Posts:{$childforum['postsnum']}<br /><span class="lastpost">Last:<a href="{$viewurl}">{$childforum['lastuser']}</a></span></td></tr></tbody></table></div>
+<!--
+EOT;
+			}
+		}
+	}
+	print<<<EOT
+-->
+	<div class="div_clear"></div>
+	</div>
+<!--
+EOT;
+}
+print<<<EOT
+-->
+	</div>
+</div>
+<div class="div_clear" style="height:12px;"></div>
+<div class="div_out index_else">
+	<table class="title">
+		<tr>
+			<td class="left"></td>
+			<td>Misc</td>
+			<td class="right"></td>
+		</tr>
+	</table>
+	<div class="index_else_out">
+
+<!--
+EOT;
+if(numFilter($cache_settings['indexmostonline'])>0){
+print <<<EOT
+-->
+
+<!--
+EOT;
+}
+print<<<EOT
+-->			
+		<div class="index_a4"><b>Links</b></div>
+		<div class="index_a6">
+<!--
+EOT;
+foreach($cache_links_logo as $link){
+print<<<EOT
+-->
+		<a href="{$link['url']}" target="_blank" title="{$link['content']}"><img src="{$link['logo']}" border="0" /></a>
+<!--
+EOT;
+}
+print<<<EOT
+-->
+	</div>
+	<div class="index_a7">
+<!--
+EOT;
+foreach($cache_links_text as $link){
+print<<<EOT
+-->
+		<p><a href="{$link['url']}" target="_blank" title="{$link['content']}">{$link['name']}</a></p>
+<!--
+EOT;
+}
+print<<<EOT
+-->
+	<div class="div_clear" style="height:1px;"></div>
+    </div>
+	</div>
+</div>
+{$adcode[2]}
+<script type="text/javascript" src="getfiles.php?t=js&v={$_SYS['VERSION']}&f=util|index"></script>
+<!--
+EOT;
+if(!empty($announce_index)){
+print <<<EOT
+-->
+<script type="text/javascript">
+window.onload=function(){
+       var o=E("announce_index_div");
+       window.setInterval(function(){scrollup(o,22,0);},3000);
+}
+</script>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+
+<!--
+EOT;
+?>
+-->

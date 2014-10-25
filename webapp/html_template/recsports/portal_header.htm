@@ -1,0 +1,52 @@
+<!--<?php
+print <<<EOT
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$headtitle}</title>
+{$headmeta}
+{$cache_settings['headcontent']}
+<link href="template/6kbbs/portal.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="header_top">
+		<div class="div_out_onbg header_center_portal">
+<div class="header_top_left"><a href="portal.php">门户</a> | <a href="{$_SYS['indexurl']}">论坛</a></div>
+<div class="header_top_right">
+<!--
+EOT;
+if(isLogin()){
+print <<<EOT
+-->
+<a href="member.php">Welcome: {$lg['displayname']}</a> | {$msg_link} | <a href="member.php">Personal Center</a> | <a href="logout.php">Logout</a>
+<!--
+EOT;
+if($lg['groupid']==GROUP_ADMIN){
+print <<<EOT
+-->
+ | <a href="admin" target="_blank">Settings</a>
+<!--
+EOT;
+}
+}else{
+print <<<EOT
+-->
+<a href="login.php">Login</a> | <a href="{$cache_settings['signupfilename']}">Register</a>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</div>
+		</div>
+	</div>
+<div class="header">
+<table class="header_table"><tr><td class="header_table_left"><a href="{$_SYS['portalurl']}"><img src="images/logo_portal234x60.gif" border="0" /></a></td><td class="header_table_right"><div class="logoright">{portal_header}</div></td></tr></table>
+</div>
+<div class="div_out portal_menu">{$portal->getPortalChannel()}</div>
+<!--
+EOT;
+?>
+-->

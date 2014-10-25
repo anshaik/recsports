@@ -1,0 +1,37 @@
+<!--<?php
+if(!empty($secmenu)){
+print <<<EOT
+-->
+<div class="portal_menu_sec" style="">{$secmenu}</div>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<div class="position"><span>You're at:</span> {$_SYS['positionportal']} {$_SYS['positionchannel']} » <a href="{$_SYS['articleurl']}">{$row['title']}</a></div>
+<!--
+EOT;
+print <<<EOT
+-->
+<div class="portal_2">
+	<div class="list_2_2">
+		<div class="list_news_block">
+<span class="portal_article_title">{$row['title']}</span>
+<div class="portal_article_content">
+	{$row['content']}
+</div>
+		</div>
+	</div>
+	<div class="list_2_3">{article_right_top}
+		<span class="portal_title1">Hightlight</span><ul class="block_ul">{$portal->getArticles(0,2,0,10,2,70)}</ul>
+		<div class="div_clear" style="height:10px;"></div>
+		<span class="portal_title1">Hot</span><ul class="block_ul">{$portal->getArticles(0,0,1,10,0)}</ul>
+		{article_right_bottom}
+	</div>
+	<div class="div_clear"></div>
+</div>
+{portal_middle}
+<!--
+EOT;
+?>
+-->

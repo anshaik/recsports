@@ -1,0 +1,33 @@
+<!--<?php
+$mtitle='';
+foreach($cache_credits as $credits){
+	$mtitle.="<td width='60px'><a href='userlist.php?orderby={$credits['creditscode']}'>{$credits['creditsname']}</a></td>";
+}
+print <<<EOT
+-->
+<div class="position"><span>You're at:</span> {$_SYS['positionindex']} » <a href="userlist.php">Member List</a></div>
+<div class="div_out">
+<table class="userlist_out">
+<thead><tr><td width="150px">Username</td><td width="50px">Sex</td><td width="120px">Reg Time</td><td width="120px"><a href='userlist.php?orderby=logintime'>Last online</a></td><td width="60px"><a href="userlist.php?orderby=postsnum">Post</td>{$mtitle}<td width="">Group</td></tr></thead>
+
+<!--
+EOT;
+foreach($rows as $row){
+print <<<EOT
+-->
+<tbody><tr><td><a href="{$row['userurl']}" target="_blank">{$row['username']}</a></td><td>{$row['sex']}</td><td><span class="time">{$row['signuptime']}</span></td><td><span class="time">{$row['logintime']}</span></td><td>{$row['postsnum']}</td>{$row['mvalue']}<td>{$cache_groups[$row['groupid']]['groupname']}</td></tr></tbody>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</table>
+</div>
+<div class="div_clear" style="height:10px;"></div>
+<div class="div_out userlist_page">
+{$pager->getPageStr()}
+</div>
+<!--
+EOT;
+?>
+-->

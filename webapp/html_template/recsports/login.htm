@@ -1,0 +1,37 @@
+<!--<?php
+print <<<EOT
+-->
+<div class="position"><span>You're at:</span> {$_SYS['positionindex']} » <a href="login.php">Login</a></div>
+<div class="div_out login_div">
+	<div class="div_out_inner_nobg" style="width:700px;">
+		<form action="{$loginaction}" method="POST" onsubmit="return login_checkAllAction();">
+		<table>
+			<tr><td class="login_a1"></td><td class="login_a2"><span id="input_err"><span class='login_title'>Login</span></span></td></tr>
+			<tr><td class="login_a1">Username:</td><td class="login_a2"><input type="text" style="width:200px;" name="username" id="username" tabIndex="100" class="text_css" /> <a href="{$cache_settings['signupfilename']}">Register</a></td></tr>
+			<tr><td class="login_a1">Password: </td><td class="login_a2"><input type="password" style="width:200px;" name="userpass" id="userpass" tabIndex="101" class="text_css" /> <a href="public.php?action=forgetpass">Forget Password</a></td></tr>
+<!--
+EOT;
+if($cache_settings['loginsecuritycode']=='1'){
+print <<<EOT
+-->
+			<tr><td class="login_a1">Validation Code:</td><td class="login_a2"><input type="text" style="width:50px;" name="securitycode" id="securitycode" tabIndex="102" class="text_css" /> <a href="javascript:reloadVerify('securitycodeimg')" title="Refresh"><img src="code.php?t={$_SYS['time']}" align="absmiddle" border="0" id="securitycodeimg" /></a> <a href="javascript:reloadVerify('securitycodeimg')" title="Refresh">Refresh</a></td></tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+			<tr><td class="login_a1">Login:</td><td class="login_a2"><input type="radio" value="1" name="userhidden" class="radio_css" tabIndex="103" /> Yes <input type="radio" value="0" name="userhidden" checked="true" class="radio_css" tabIndex="104" /> No </td></tr>
+			<tr><td class="login_a1"></td><td class="login_a2"><input type="checkbox" name="userrem" value="y" class="checkbox_css" tabIndex="105" /> Remember me</td></tr>
+			<tr><td class="login_a1"></td><td class="login_a2"><input type="submit" class="button_css" value="Login" tabIndex="106" /><input type="hidden" name="ref" value="{$ref}" /></td></tr>
+		</table>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="getfiles.php?t=js&v={$_SYS['VERSION']}&f=util|login"></script>
+<script type="text/javascript">
+window.onload=login_PageInit;
+</script>
+<!--
+EOT;
+?>
+-->
