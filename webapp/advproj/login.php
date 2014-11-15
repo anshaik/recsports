@@ -34,6 +34,7 @@ $md5c = "sdfawe23q45gsfd533fgad";
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li class="selected"><a href="#">Home</a></li>
+          <li><a href="guest.php">Guest</a></li>
         </ul>
       </div>
     </div>
