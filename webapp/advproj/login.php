@@ -50,25 +50,35 @@ $md5c = "sdfawe23q45gsfd533fgad";
             <p>Don't have an account? <a href='registerUser.php'>Register here</a>.</p>
         </form>
         <?php
-        	$table_name = "User";
+        	
+			$table_name = "User";
             //okay, lets log them in..
             if(isset($_POST['submit'])) { //run code if they clicked the Complete Login button
-                $userid = mysql_real_escape_string($_POST['userid']);
-                $password = mysql_real_escape_string($_POST['password']);
+               // $userid = mysql_real_escape_string($_POST['userid']);
+               // $password = mysql_real_escape_string($_POST['password']);
+
+				$userid = $_POST['userid'];
+				$password = $_POST['password'];
 
 				// REPLACE WITH JAVASCRIPT LATER			
                 if($userid == "" || $password == "") { //someone didn't fill out fields :O
                     die("<p><font color='red'>Error: One or more fields are empty!</font></p>");
                 }
-                $password = md5($password,$md5c); //again..check the register page code :D
+                //$password = md5($password,$md5c); //again..check the register page code :D
 				$q =  "SELECT * FROM ".$table_name." WHERE user_id='".$userid."' AND password='".$password."'";
-                $result = mysql_query($q) or die(mysql_error().": $q"); //check for the account
-                $n1 = mysql_num_rows($result); //see if it was found
-                if($n1 == 0) { //if it wasn't found
+				$stmt = $db->query($q);
+				$row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+				
+               // $result = mysql_query($q) or die(mysql_error().": $q"); //check for the account
+               // $n1 = mysql_num_rows($result); //see if it was found
+                $n1 = $stmt->rowCount();
+
+				if($n1 == 0) { //if it wasn't found
                     die("<p><font color='red'>Error: Account not found. Please make sure you entered your username and password correctly.</font></p>");
                 }
-                $r1 = mysql_fetch_assoc($result); //Get the account data
-				if($r1['admin']=='1')
+                //$r1 = mysql_fetch_assoc($result); //Get the account data
+				if($row['admin']=='1')
 					$_SESSION['admin'] = 1;
 				else
 					$_SESSION['admin'] = 0;
