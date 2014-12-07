@@ -81,7 +81,7 @@ xmlhttp.send();
 	/* Ensure all form variables (teamname and league) are set */
 	if (isset($_POST['teamname'], $_POST['league']))
 	{
-	  $teamname = $_POST['teamname'];
+	  $teamname = $1['teamname'];
 	  $leagueid = $_POST['league'];	
 	 
 	  
